@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OUR TEAM</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f5;
+  color: #222;
+}
+
+header {
+  padding: 25px 7%;
+  background: white;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 45px 18px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.heading h1 {
+  font-size: 34px;
+  letter-spacing: 2px;
+}
+
+.heading p {
+  color: #888;
+  margin-top: 10px;
+}
+
+.members {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px #00000010;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #eee;
+}
+
+.card h3 {
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+.card p {
+  color: #888;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* PROFILE */
+
+.profile {
+  display: none;
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  animation: appear .3s ease;
+}
+
+.profile-top {
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.profile-top img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #eee;
+  margin-bottom: 15px;
+}
+
+.profile-top h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.profile-top p {
+  color: #888;
+}
+
+.section {
+  border-top: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.section h3 {
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 14px 10px;
+  font-size: 14px;
+}
+
+.label {
+  color: #999;
+}
+
+.value {
+  color: #333;
+  overflow-wrap: anywhere;
+}
+
+.intro {
+  color: #666;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.back {
+  background: #222;
+  color: white;
+  border: none;
+  padding: 13px 25px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #aaa;
+  font-size: 12px;
+  border-top: 1px solid #eee;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width:650px) {
+  .members {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .heading h1 {
+    font-size: 27px;
+  }
+
+  .profile {
+    padding: 18px;
+  }
+
+  .info {
+    grid-template-columns: 100px 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">IS TEAM.</div>
+  <span>2077</span>
+</header>
+
+<main class="container">
+
+  <div class="heading" id="heading">
+    <h1>IS TEAM</h1>
+    <p>ทำความรู้จักสมาชิกทั้ง 6 คน</p>
+  </div>
+
+  <div class="members" id="members"></div>
+
+  <div class="profile" id="profile">
+
+    <div class="profile-top">
+      <img id="photo" src="" alt="รูปสมาชิก">
+      <h2 id="name"></h2>
+      <p id="role"></p>
+    </div>
+
+    <div class="section">
+      <h3>ข้อมูลส่วนตัว</h3>
+      <div class="info" id="info"></div>
+    </div>
+
+    <div class="section">
+      <h3>แผนการเรียนที่กำลังสนใจ</h3>
+      <p class="intro" id="intro"></p>
+    </div>
+
+    <button class="back" onclick="goBack()">
+      ← กลับหน้าหลัก
+    </button>
+
+  </div>
+
+</main>
+
+<footer>
+  IS Team ja jubๆ
+</footer>
+
+<script>
+
+// แก้ไขข้อมูลสมาชิกตรงนี้
+
+const people = [
+
+{
+  name: "นายอภิสิทธิ์ โอสถสงเคราะห์",
+  nickname: "แบงค์",
+  age: "17",
+  classroom: "ม.5/1",
+  school: "White Room",
+  skill: "ควบคุมบงการคน",
+  role: "อายาโนะโคแบงค์",
+  intro: "จิตวิทยาสายดาร์ก",
+  image: "images/Bank.jpeg"
+},
+
+{
+  name: "นายกิติศักดิ์ อินประสิทธิ์",
+  nickname: "ฟีล์ม",
+  age: "ไม่สามารถวัดเป็นตัวเลข",
+  classroom: "ม.5/1",
+  school: "ธรรมศาสตร์คลองหลวงวิทยาคม",
+  hobby: "งานอดิเรก",
+  skill: "11คนโอบ",
+  role: "หมากตัวสำคัญ",
+  intro: "บลาๆ",
+  image: "images/Film.jpg"
+},
+
+{
+  name: "นายโภคิน ประทุมทอง",
+  nickname: "ไท",
+  age: "17",
+  classroom: "ม.5/1",
+  school: "ธรรมศาสตร์คลองหลวงวิทยาคม",
+  hobby: "งานอดิเรก",
+  skill: "บีบให้เพื่อนออก",
+  role: "หมากระดับธรรมดา1",
+  intro: "บลาๆ",
+  image: "images/Tai.jpg"
+},
+
+{
+  name: "นายณัฐพงษ์ ร่องจิก",
+  nickname: "เอิร์ธ",
+  age: "16",
+  classroom: "ม.5/1",
+  school: "ธรรมศาสตร์คลองหลวงวิทยาคม",
+  hobby: "งานอดิเรก",
+  skill: "ชำนาญทุกภาษา",
+  role: "หมากระดับธรรมดา2",
+  intro: "บลาๆ",
+  image: "images/Earth.jpg"
+},
+
+{
+  name: "นายพุทธวัจ์ แสนสุข",
+  nickname: "พอล",
+  age: "17",
+  classroom: "ม.5/1",
+  school: "ธรรมศาสตร์คลองหลวงวิทยาคม",
+  hobby: "งานอดิเรก",
+  skill: "หล่อเหลาเอาการ",
+  role: "หมากระดับธรรมดา3",
+  intro: "บลาๆ",
+  image: "images/Paul.jpg"
+},
+
+{
+  name: "นายเทพวัชระ บุญทรัพย์เจริญ",
+  nickname: "เทพ,เกาหลี,ซันเดย์",
+  age: "17",
+  classroom: "ม.5/1",
+  school: "โรงเรียนฝึกสุนัข",
+  hobby: "งานอดิเรก",
+  skill: "Nope",
+  role: "It Just A Ediot Dog",
+  intro: "Dog",
+  image: "images/Dog.jpg"
+}
+
+];
+
+// สร้างการ์ดสมาชิก
+
+const members = document.getElementById("members");
+
+people.forEach((person, index) => {
+
+  const card = document.createElement("div");
+  card.className = "card";
+
+  const img = document.createElement("img");
+  img.src = person.image;
+  img.alt = person.name;
+
+  const title = document.createElement("h3");
+  title.textContent = person.name;
+
+  const role = document.createElement("p");
+  role.textContent = person.role;
+
+  card.append(img, title, role);
+  card.onclick = () => openProfile(index);
+
+  members.appendChild(card);
+
+});
+
+// เปิดหน้าโปรไฟล์
+
+function openProfile(index) {
+
+  const p = people[index];
+
+  document.getElementById("photo").src = p.image;
+  document.getElementById("name").textContent = p.name;
+  document.getElementById("role").textContent = p.role;
+  document.getElementById("intro").textContent = p.intro;
+
+  const fields = [
+    ["ชื่อเล่น", p.nickname],
+    ["อายุ", p.age],
+    ["ชั้นเรียน", p.classroom],
+    ["โรงเรียน", p.school],
+    ["หน้าที่ในกลุ่ม", p.role]
+  ];
+
+  const info = document.getElementById("info");
+  info.innerHTML = "";
+
+  fields.forEach(([label, value]) => {
+
+    const l = document.createElement("div");
+    l.className = "label";
+    l.textContent = label;
+
+    const v = document.createElement("div");
+    v.className = "value";
+    v.textContent = value;
+
+    info.append(l, v);
+
+  });
+
+  document.getElementById("heading").style.display = "none";
+  members.style.display = "none";
+  document.getElementById("profile").style.display = "block";
+
+  window.scrollTo(0, 0);
+}
+
+// กลับหน้าหลัก
+
+function goBack() {
+
+  document.getElementById("profile").style.display = "none";
+  document.getElementById("heading").style.display = "block";
+  members.style.display = "grid";
+
+  window.scrollTo(0, 0);
+}
+
+</script>
+
+</body>
+</html>
